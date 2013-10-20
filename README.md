@@ -5,12 +5,12 @@ Demonstrates forecasting using a log-normal random walk model. Stock prices down
 
 Requirements
 ------------
-Python 2.7
-NumPy
-MatPlotLib
-Pandas
-Internet connection
-Graphical display
+1. Python 2.7
+1. NumPy
+1. MatPlotLib
+1. Pandas
+1. Internet connection
+1. Graphical display
 
 Utilities
 --------
