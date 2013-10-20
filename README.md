@@ -1,6 +1,8 @@
 Log-normal Model Demo
 =====================
 
+![Plot for an ETF](https://github.com/alfredroney/lognormal-model-demo/raw/screenshots/screenshot_SPY.png)
+
 Demonstrates forecasting using a log-normal random walk model. Stock prices downloaded from Yahoo! using Pandas are fit and plotted. Also demonstrates the Python "using" construct, how to create a simple caching data store, and how to use the unittest module. Simple Monte Carlo simulations are used to validate the model fitter and forecasting routines.
 
 Requirements
