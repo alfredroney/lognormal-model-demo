@@ -27,7 +27,7 @@ def getForecast(t,p,ndays):
     
     return u,sm,sp,tpred,projstr,actstr
 
-def plotForecast(t,p,u,sm,sp,tpred,projstr,actstr,ticker,tickerDesc):
+def plotForecast(t,p,u,sm,sp,tpred,projstr,actstr,titleString):
     plt.figure(figsize=(11,8.5))
     plt.plot(t,p)
     plt.plot(tpred,u,'g-',linewidth=2.0)
@@ -43,21 +43,25 @@ def plotForecast(t,p,u,sm,sp,tpred,projstr,actstr,ticker,tickerDesc):
     
     plt.legend(['Market Price','Projected Price','68% Confidence Cone'],loc=2)
     
-    plt.title(tickerDesc + ' (' + ticker + ')')
+    plt.title(titleString)
     plt.figtext(0.6,0.12,'Return: ' +projstr + ', ' + actstr,
                 bbox=dict(facecolor='white',alpha=0.85,ec='none'))
     plt.show()
 
-def doVisualAnalysis(t,p,ndays,ticker,tickerDesc):
+def printDivider():
     print '----------------------------------'
-    print 'Analyzing',tickerDesc+' ('+ticker+'):'
-    
+
+def doVisualAnalysis(t,p,ndays,ticker,tickerDesc):
+    titleString = ticker
+    if tickerDesc:
+        titleString +=  ' (' + tickerDesc + ')'
+    printDivider()
+    print 'Analyzing',titleString+':'
     u,sm,sp,tpred,projstr,actstr = getForecast(t,p,ndays)
-    
     print projstr
-    print actstr
-    
-    plotForecast(t,p,u,sm,sp,tpred,projstr,actstr,ticker,tickerDesc)
+    print actstr    
+    plotForecast(t,p,u,sm,sp,tpred,projstr,actstr,titleString)
+    printDivider()
 
 if __name__ == '__main__':
     db = HistoricalQuotesDatabase()
