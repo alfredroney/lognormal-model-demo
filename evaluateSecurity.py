@@ -24,13 +24,13 @@ if __name__ == '__main__':
     numYears = int(sys.argv[1])
     
     for ticker in sys.argv[2:]:
-        data = downloadDataFrameFor(ticker,numYears)
-        if data:
+        try:
+            data = downloadDataFrameFor(ticker,numYears)
             t = data.index
             p = np.array(data['Adj Close'])
             doVisualAnalysis(t,p,getNumTradingDaysPerYear(),ticker,None)
-        else:
+        except:
             print '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
-            print '!! Error: no data for',ticker
+            print '!! Error while analyzing',ticker
             print '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
             
