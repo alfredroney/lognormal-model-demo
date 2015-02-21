@@ -36,7 +36,7 @@ Quick Start
 1. Download and install *Canopy Express* from https://store.enthought.com using the defaults.
 1. Clone the git repository to a folder with write and execute permissions.
 1. Open a new Canopy terminal window.
-1. Switch to the cloned repository and run **evaluateLogNormalModel.py**.
+1. Set your working directory to the cloned repository and run **evaluateLogNormalModel.py**.
 
 When you are finished examining a plot, closing the plot window will automatically queue up the next ticker in the portfolio. The tickers of interest are defined in plain text files in the data sub-folder, one-per-line, using a { symbol, comment } format. Comment lines are prefixed with the '#' character.
 
