@@ -16,7 +16,7 @@ Requirements
 
 Quick Start
 -----------
-** Linux **
+**Linux**
 
 1. Ensure all required packages are installed.
 2. Open a new terminal window and switch to a folder with write and execute permissions.
@@ -25,12 +25,12 @@ Quick Start
     $ cd lognormal-model-demo
     $ python evaluateLogNormalModel.py
 
-** Mac OS X **
+**Mac OS X**
 
 1. Download and install *Canopy Express* from https://store.enthought.com using the defaults.
 2. Follow steps 2-3 from the Linux instructions.
 
-** Windows **
+**Windows**
 
 1. Download and install *Canopy Express* from https://store.enthought.com using the defaults.
 2. Clone the git repository to a folder with write and execute permissions.
