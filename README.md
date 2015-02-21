@@ -37,7 +37,7 @@ Quick Start
 1. Clone the git repository to a folder with write and execute permissions.
 1. Open a new Canopy terminal window.
 1. Switch to the cloned repository and run the code:
-
+    
         
         python evaluateLogNormalModel.py
 
