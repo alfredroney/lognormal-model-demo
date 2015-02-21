@@ -19,26 +19,27 @@ Quick Start
 **Linux**
 
 1. Ensure all required packages are installed.
-2. Open a new terminal window and switch to a folder with write and execute permissions.
-3. Clone this repository and run *evaluateLogNormalModel.py*
+1. Open a new terminal window and switch to a folder with write and execute permissions.
+1. Execute the following commands:
     
-    git clone https://github.com/alfredroney/lognormal-model-demo.git
-    cd lognormal-model-demo
-    python evaluateLogNormalModel.py
+        git clone https://github.com/alfredroney/lognormal-model-demo.git
+        cd lognormal-model-demo
+        python evaluateLogNormalModel.py
 
 **Mac OS X**
 
 1. Download and install *Canopy Express* from https://store.enthought.com using the defaults.
-2. Follow steps 2-3 from the Linux instructions.
+1. Follow steps 2-3 from the Linux instructions.
 
 **Windows**
 
 1. Download and install *Canopy Express* from https://store.enthought.com using the defaults.
-2. Clone the git repository to a folder with write and execute permissions.
-2. Open a new Canopy terminal window.
-3. Switch to the cloned repository and run the code:
-    
-    python evaluateLogNormalModel.py
+1. Clone the git repository to a folder with write and execute permissions.
+1. Open a new Canopy terminal window.
+1. Switch to the cloned repository and run the code:
+
+        
+        python evaluateLogNormalModel.py
 
 When you are finished examining a plot, closing the plot window will automatically queue up the next ticker in the portfolio. The tickers of interest are defined in plain text files in the data sub-folder, one-per-line, using a { symbol, comment } format. Comment lines are prefixed with the '#' character.
 
