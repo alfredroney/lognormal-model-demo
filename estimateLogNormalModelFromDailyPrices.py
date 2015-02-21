@@ -45,7 +45,7 @@ class estimateLogNormalModelFromDailyPricesTest(unittest.TestCase):
         numTradingDays = 4*getNumTradingDaysPerYear()
         annualGrowthRate0 = 3.14
         logVolatility0    = 0.00123
-        numCols = 20000
+        numCols = 50000 # keep this fairly large to prevent sporadic failures
         
         p = makeFakeDailyPrices(annualGrowthRate0,logVolatility0,
                                 numTradingDays,numCols)

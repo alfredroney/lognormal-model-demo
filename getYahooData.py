@@ -43,10 +43,10 @@ def downloadDataFrameFor(symbol,numYears=5):
 
 def downloadDataSet(symbols,numYears,pickleName='historicalData.pickle'):
     frames = {}
-    for symbol in symbols:
+    for symbol in sorted(symbols):
         print 'Downloading historical record for "'+symbol+'" . . .'
         data = downloadDataFrameFor(symbol,numYears)
-        if data:
+        if data is not None and not data.empty:
             frames[symbol] = data
     if len(frames.keys()):
         if pickleName:

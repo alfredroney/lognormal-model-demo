@@ -105,21 +105,34 @@ class HistoricalQuotesDatabase:
                 return self.data['indices'][key]
         return None
 
+def deletePickle(fileName):
+    if os.path.isfile(fileName):
+        os.unlink(fileName)
+    
 class TestHistoricalQuotesDatabase(unittest.TestCase):
-    def test_HistoricalQuotesDatabase(self):
+    @classmethod
+    def setUpClass(self):
+        self.testPickleName = 'database_for_test.pickle'
+        
+        with TemporaryWorkingFolder(defaultDatabaseFolderPath):
+            '''When we initialize the test'''
+            deletePickle(self.testPickleName)
+            deletePickle(databasePickleName)
+        
+    def test_HistoricalQuotesDatabase1(self):
         hdb = HistoricalQuotesDatabase()
         
         self.assertEqual(hdb.databasePickleName,databasePickleName)
         self.assertEqual(hdb.securitiesFileName,securitiesFileName)
         self.assertEqual(hdb.indicesFileName, indicesFileName)
         
-        self.assertNotEqual(None,hdb.data)
+        self.assertFalse(hdb.data is None)
 
         hdb = HistoricalQuotesDatabase(False)
 
-        self.assertEqual(None,hdb.data)
+        self.assertTrue(hdb.data is None)
         
-        hdb.databasePickleName = 'database_for_test.pickle'
+        hdb.databasePickleName = self.testPickleName
         hdb.securitiesFileName = 'securities_for_test.dat'
         hdb.indicesFileName    = 'indices_for_test.dat'
         hdb.numYears = 1
@@ -132,4 +145,7 @@ class TestHistoricalQuotesDatabase(unittest.TestCase):
         
         self.assertEquals(hdb['securities'],['SPY', 'AAPL', 'GLD'])
         self.assertEquals(hdb['indices'],['^IXIC', '^GSPC'])
-        
+    
+    def test_HistoricalQuotesDatabase2(self):
+        '''Make sure the test re-runs with the pickles in-place.'''
+        self.test_HistoricalQuotesDatabase1()    

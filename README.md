@@ -1,4 +1,4 @@
-Log-normal Model Demo
+Log-normal Model Demo, 1.1.0
 =====================
 
 ![Plot for an ETF](https://github.com/alfredroney/lognormal-model-demo/raw/screenshots/screenshot_SPY.png)
@@ -14,6 +14,32 @@ Requirements
 1. Internet connection
 1. Graphical display
 
+Quick Start
+-----------
+** Linux **
+
+1. Ensure all required packages are installed.
+2. Open a new terminal window and switch to a folder with write and execute permissions.
+3. Clone this repository and run *evaluateLogNormalModel.py*
+    $ git clone https://github.com/alfredroney/lognormal-model-demo.git
+    $ cd lognormal-model-demo
+    $ python evaluateLogNormalModel.py
+
+** Mac OS X **
+
+1. Download and install *Canopy Express* from https://store.enthought.com using the defaults.
+2. Follow steps 2-3 from the Linux instructions.
+
+** Windows **
+
+1. Download and install *Canopy Express* from https://store.enthought.com using the defaults.
+2. Clone the git repository to a folder with write and execute permissions.
+2. Open a new Canopy terminal window.
+3. Switch to the cloned repository and run the code:
+    $ python evaluateLogNormalModel.py
+
+When you are finished examining a plot, closing the plot window will automatically queue up the next ticker in the portfolio. The tickers of interest are defined in plain text files in the data sub-folder, one-per-line, using a { symbol, comment } format. Comment lines are prefixed with the '#' character.
+
 Utilities
 --------
 
@@ -26,4 +52,18 @@ Classes
 
 **HistoricalQuotesDatabase.py** - Module for caching a frequently-accessed set of daily price quotes downloaded from Yahoo! using *Pandas*.
 
-**TemporaryWorkingFolder.py** - Module for accessing the data folder using a pseudo-RAII idiom. Changes the working folder, and guarantees that the previous working folder will be restored regardless of exceptions or early return.
+**TemporaryWorkingFolder.py** - Module for accessing the data folder using a pseudo-RAII idiom. Changes the working folder, and guarantees that the previous working folder will be restored regardless of exceptions or early return
+
+Modules
+-------
+
+**getYahooData.py** - Interface to Pandas data download routine.
+
+**makeFakeDailyPrices.py** - Uses a PRNG from *NumPy* to generate test data with specified parameters. Used to test the regression algorithm.
+
+**getMeanSquareDisplacement.py** - Computes the average of the squares of the change in a time series using a simple moving average technique.
+
+**estimateLogNormalModelFromDailyPrices.py** - Given a time series of prices and other parameters, generate a forecast and confidence interval for the underlying security.
+
+
+

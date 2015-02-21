@@ -31,6 +31,6 @@ if __name__ == '__main__':
             doVisualAnalysis(t,p,getNumTradingDaysPerYear(),ticker,None)
         except:
             print '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
-            print '!! Error while analyzing',ticker
+            print '!! Unexpected error while analyzing "'+ticker+'":',
+            print sys.exc_info()[1]
             print '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
-            

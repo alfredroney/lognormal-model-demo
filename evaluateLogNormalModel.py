@@ -9,9 +9,12 @@ from estimateLogNormalModelFromDailyPrices \
 from HistoricalQuotesDatabase import HistoricalQuotesDatabase
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
 
 def getForecast(t,p,ndays):
-    pfit = p[-4*ndays:-ndays]    
+    pfit = p[-4*ndays:-ndays]
+    if len(pfit) < 2:
+        raise ValueError('Not enough data for a '+str(ndays)+'-day forecast')    
     tpred = t[-ndays:]
     npred = len(tpred)
     p0 = p[-ndays]
@@ -57,17 +60,33 @@ def doVisualAnalysis(t,p,ndays,ticker,tickerDesc):
         titleString +=  ' (' + tickerDesc + ')'
     printDivider()
     print 'Analyzing',titleString+':'
-    u,sm,sp,tpred,projstr,actstr = getForecast(t,p,ndays)
-    print projstr
-    print actstr    
-    plotForecast(t,p,u,sm,sp,tpred,projstr,actstr,titleString)
+    try:
+        u,sm,sp,tpred,projstr,actstr = getForecast(t,p,ndays)
+        print projstr
+        print actstr    
+        plotForecast(t,p,u,sm,sp,tpred,projstr,actstr,titleString)
+    except ValueError as valueError:
+        print '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+        print '!! Error while analyzing "'+ticker+'":'
+        print '!!', valueError.args[0]
+        print '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+    except:
+        print '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+        print '!! Unexpected error while analyzing "'+ticker+'":'
+        print '!!', sys.exc_info()[1]
+        print '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'    
     printDivider()
 
 if __name__ == '__main__':
     db = HistoricalQuotesDatabase()
     
-    for ticker in db['securities']+db['indices']:
-        data = db['prices'][ticker]
-        t = data.index
-        p = np.array(data['Adj Close'])
-        doVisualAnalysis(t,p,getNumTradingDaysPerYear(),ticker,db[ticker])
+    for ticker in sorted(db['securities']+db['indices']):
+        try:
+            data = db['prices'][ticker]
+            t = data.index
+            p = np.array(data['Adj Close'])
+            doVisualAnalysis(t,p,getNumTradingDaysPerYear(),ticker,db[ticker])
+        except:
+            print 'Unexpected error with "'+ticker+'":',
+            print sys.exc_info()[0]
+            
