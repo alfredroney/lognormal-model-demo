@@ -1,4 +1,4 @@
-Log-normal Model Demo, 1.1.0
+Log-normal Model Demo, v1.1.0
 =====================
 
 ![Plot for an ETF](https://github.com/alfredroney/lognormal-model-demo/raw/screenshots/screenshot_SPY.png)
